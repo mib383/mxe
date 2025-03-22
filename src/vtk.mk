@@ -46,8 +46,8 @@ define $(PKG)_BUILD
     cd '$(BUILD_DIR)' && '$(TARGET)-cmake' '$(SOURCE_DIR)' \
         -DVTKCompileTools_DIR='$(PREFIX)/$(BUILD)/vtkCompileTools' \
         -DBUILD_SHARED_LIBS=$(CMAKE_SHARED_BOOL) \
-        -DVTK_Group_Qt=ON \
-        -DVTK_Group_Imaging=ON \
+        -DVTK_GROUP_ENABLE_Qt=YES \
+        -DVTK_GROUP_ENABLE_Imaging=YES \
         -DVTK_QT_VERSION=$($(PKG)_QT_VERSION) \
         -DVTK_USE_CXX11_FEATURES=ON \
         -DVTK_FORBID_DOWNLOADS=ON \

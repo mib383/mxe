@@ -7,8 +7,8 @@ $(PKG)_CHECKSUM   := 34c3dc775261be5e45a8049155f7228b6bd668106c72a3c435d95730d17
 $(PKG)_SUBDIR     := VTK-$($(PKG)_VERSION)
 $(PKG)_FILE       := $($(PKG)_SUBDIR).tar.gz
 $(PKG)_URL        := https://www.vtk.org/files/release/$(call SHORT_PKG_VERSION,$(PKG))/$($(PKG)_FILE)
-$(PKG)_QT_VERSION := 5
-$(PKG)_DEPS       := cc expat freetype glew hdf5 jsoncpp libpng libxml2 lz4 qtbase qttools tiff $(BUILD)~$(PKG)
+$(PKG)_QT_VERSION := 6
+$(PKG)_DEPS       := cc expat freetype glew hdf5 jsoncpp libpng libxml2 lz4 qt6-base qt6-tools tiff $(BUILD)~$(PKG)
 
 $(PKG)_TARGETS       := $(BUILD) $(MXE_TARGETS)
 $(PKG)_DEPS_$(BUILD) := cmake

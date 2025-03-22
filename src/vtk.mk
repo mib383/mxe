@@ -2,8 +2,8 @@
 
 PKG               := vtk
 $(PKG)_IGNORE     :=
-$(PKG)_VERSION    := 8.2.0
-$(PKG)_CHECKSUM   := 34c3dc775261be5e45a8049155f7228b6bd668106c72a3c435d95730d17d57bb
+$(PKG)_VERSION    := 9.4.1
+$(PKG)_CHECKSUM   := e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 $(PKG)_SUBDIR     := VTK-$($(PKG)_VERSION)
 $(PKG)_FILE       := $($(PKG)_SUBDIR).tar.gz
 $(PKG)_URL        := https://www.vtk.org/files/release/$(call SHORT_PKG_VERSION,$(PKG))/$($(PKG)_FILE)

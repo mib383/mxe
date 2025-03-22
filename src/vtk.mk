@@ -8,8 +8,7 @@ $(PKG)_SUBDIR     := VTK-$($(PKG)_VERSION)
 $(PKG)_FILE       := $($(PKG)_SUBDIR).tar.gz
 $(PKG)_URL        := https://www.vtk.org/files/release/$(call SHORT_PKG_VERSION,$(PKG))/$($(PKG)_FILE)
 $(PKG)_QT_VERSION := 6
-$(PKG)_DEPS       := cc expat freetype glew hdf5 jsoncpp libpng libxml2 lz4 qt6-qtbase qt6-qttools tiff
-# $(BUILD)~$(PKG)
+$(PKG)_DEPS       := cc expat freetype glew hdf5 jsoncpp libpng libxml2 lz4 qt6-qtbase qt6-qttools tiff $(BUILD)~$(PKG)
 
 $(PKG)_TARGETS       := $(BUILD) $(MXE_TARGETS)
 $(PKG)_DEPS_$(BUILD) := cmake
@@ -23,19 +22,19 @@ $(PKG)_DEPS_$(BUILD) := cmake
 #    tail -1
 #endef
 #
-#define $(PKG)_BUILD_$(BUILD)
-#    # first we need a native build to create the compile tools
-#    # must be built in dest since there's no way to install tools only
-#    # and the build rules reference certain make targets
-#    rm -rf '$(PREFIX)/$(BUILD)/vtkCompileTools'
-#    $(INSTALL) -d '$(PREFIX)/$(BUILD)/vtkCompileTools'
-#    cd '$(PREFIX)/$(BUILD)/vtkCompileTools' && '$(PREFIX)/$(BUILD)/bin/cmake' '$(SOURCE_DIR)' \
-#        -DBUILD_TESTING=FALSE \
-#        -DVTK_USE_X=OFF \
-#        -DVTK_DEFAULT_RENDER_WINDOW_OFFSCREEN=ON \
-#        -DCMAKE_BUILD_TYPE="Release"
-#    $(MAKE) -C '$(PREFIX)/$(BUILD)/vtkCompileTools' -j '$(JOBS)' VERBOSE=1 vtkCompileTools
-#endef
+define $(PKG)_BUILD_$(BUILD)
+    # first we need a native build to create the compile tools
+    # must be built in dest since there's no way to install tools only
+    # and the build rules reference certain make targets
+    rm -rf '$(PREFIX)/$(BUILD)/vtkCompileTools'
+    $(INSTALL) -d '$(PREFIX)/$(BUILD)/vtkCompileTools'
+    cd '$(PREFIX)/$(BUILD)/vtkCompileTools' && '$(PREFIX)/$(BUILD)/bin/cmake' '$(SOURCE_DIR)' \
+        -DBUILD_TESTING=FALSE \
+        -DVTK_USE_X=OFF \
+        -DVTK_DEFAULT_RENDER_WINDOW_OFFSCREEN=ON \
+        -DCMAKE_BUILD_TYPE="Release"
+    $(MAKE) -C '$(PREFIX)/$(BUILD)/vtkCompileTools' -j '$(JOBS)' VERBOSE=1 vtkCompileTools
+endef
 
 define $(PKG)_BUILD
     # DirectX is detected on Mac OSX but we use OpenGL

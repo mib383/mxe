@@ -40,7 +40,8 @@ endef
 define $(PKG)_BUILD
     # DirectX is detected on Mac OSX but we use OpenGL
     $(SED) -i 's,d3d9,nod3d9,g' '$(1)/CMake/FindDirectX.cmake'
-
+	
+	# -DVTK_USE_EXTERNAL=ON \
     # now the cross compilation
     cd '$(BUILD_DIR)' && '$(TARGET)-cmake' '$(SOURCE_DIR)' \
         -DVTKCompileTools_DIR='$(PREFIX)/$(BUILD)/vtkCompileTools' \
@@ -48,15 +49,15 @@ define $(PKG)_BUILD
         -DVTK_Group_Qt=ON \
         -DVTK_Group_Imaging=ON \
         -DVTK_QT_VERSION=$($(PKG)_QT_VERSION) \
-		-DVTK_USE_EXTERNAL=ON \
+		
         -DVTK_USE_CXX11_FEATURES=ON \
         -DVTK_USE_SYSTEM_LIBRARIES=OFF \
         -DVTK_USE_SYSTEM_LIBPROJ4=OFF \
         -DVTK_USE_SYSTEM_NETCDF=OFF \
         -DVTK_USE_SYSTEM_NETCDFCPP=OFF \
-        -DVTK_USE_SYSTEM_GL2PS=OFF \
-        -DVTK_USE_SYSTEM_TIFF=ON \
-        -DVTK_USE_SYSTEM_HDF5=ON \
+        -DVTK_MODULE_USE_EXTERNAL_VTK_gl2ps=OFF \
+        -DVTK_MODULE_USE_EXTERNAL_VTK_tiff=ON \
+        -DVTK_MODULE_USE_EXTERNAL_VTK_hdf5=ON \
         -DVTK_USE_SYSTEM_GLEW=ON \
         -DVTK_FORBID_DOWNLOADS=ON \
         -DBUILD_EXAMPLES=OFF \

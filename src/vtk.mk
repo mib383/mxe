@@ -34,7 +34,7 @@ define $(PKG)_BUILD_$(BUILD)
         -DVTK_DEFAULT_RENDER_WINDOW_OFFSCREEN=ON \
 		-DVTK_BUILD_COMPILE_TOOLS_ONLY=ON \
         -DCMAKE_BUILD_TYPE="Release"
-    $(MAKE) -C '$(PREFIX)/$(BUILD)/vtkCompileTools' -j '$(JOBS)' VERBOSE=1 vtkCompileTools
+    $(MAKE) -C '$(PREFIX)/$(BUILD)/vtkCompileTools' -j '$(JOBS)' VERBOSE=1
 endef
 
 define $(PKG)_BUILD

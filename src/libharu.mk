@@ -5,6 +5,8 @@ $(PKG)_WEBSITE  := http://libharu.org/
 $(PKG)_IGNORE   :=
 $(PKG)_VERSION  := 2.4.5
 $(PKG)_CHECKSUM := 0ed3eacf3ceee18e40b6adffbc433f1afbe3c93500291cd95f1477bffe6f24fc
+$(PKG)_SUBDIR   := libharu-$($(PKG)_VERSION)
+$(PKG)_FILE     := $($(PKG)_SUBDIR).tar.gz
 $(PKG)_URL      := https://github.com/libharu/libharu/archive/refs/tags/v2.4.5.tar.gz
 $(PKG)_DEPS     := cc libpng zlib
 

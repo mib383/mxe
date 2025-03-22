@@ -48,6 +48,7 @@ define $(PKG)_BUILD
         -DVTK_Group_Qt=ON \
         -DVTK_Group_Imaging=ON \
         -DVTK_QT_VERSION=$($(PKG)_QT_VERSION) \
+		-DVTK_USE_EXTERNAL=ON \
         -DVTK_USE_CXX11_FEATURES=ON \
         -DVTK_USE_SYSTEM_LIBRARIES=OFF \
         -DVTK_USE_SYSTEM_LIBPROJ4=OFF \

@@ -36,7 +36,7 @@ define $(PKG)_BUILD_$(BUILD)
         -DCMAKE_BUILD_TYPE="Release"
     $(MAKE) -C '$(PREFIX)/$(BUILD)/vtkCompileTools' -j '$(JOBS)' VERBOSE=1
 endef
-
+# to do make it via wine?
 define $(PKG)_BUILD
     # DirectX is detected on Mac OSX but we use OpenGL
     $(SED) -i 's,d3d9,nod3d9,g' '$(1)/CMake/FindDirectX.cmake'
@@ -50,15 +50,6 @@ define $(PKG)_BUILD
         -DVTK_Group_Imaging=ON \
         -DVTK_QT_VERSION=$($(PKG)_QT_VERSION) \
         -DVTK_USE_CXX11_FEATURES=ON \
-        -DVTK_USE_SYSTEM_LIBRARIES=OFF \
-        -DVTK_USE_SYSTEM_LIBPROJ4=OFF \
-        -DVTK_USE_SYSTEM_NETCDF=OFF \
-        -DVTK_USE_SYSTEM_NETCDFCPP=OFF \
-        -DVTK_MODULE_USE_EXTERNAL_VTK_gl2ps=OFF \
-        -DVTK_MODULE_USE_EXTERNAL_VTK_tiff=ON \
-        -DVTK_MODULE_USE_EXTERNAL_VTK_hdf5=ON \
-		-DVTK_MODULE_USE_EXTERNAL_VTK_libharu=ON \
-        -DVTK_USE_SYSTEM_GLEW=ON \
         -DVTK_FORBID_DOWNLOADS=ON \
         -DBUILD_EXAMPLES=OFF \
         -DBUILD_TESTING=OFF \

@@ -8,7 +8,7 @@ $(PKG)_SUBDIR     := VTK-$($(PKG)_VERSION)
 $(PKG)_FILE       := $($(PKG)_SUBDIR).tar.gz
 $(PKG)_URL        := https://www.vtk.org/files/release/$(call SHORT_PKG_VERSION,$(PKG))/$($(PKG)_FILE)
 $(PKG)_QT_VERSION := 6
-$(PKG)_DEPS       := cc expat freetype glew hdf5 jsoncpp libpng libxml2 lz4 qt6-qtbase qt6-qttools tiff $(BUILD)~$(PKG)
+$(PKG)_DEPS       := cc expat freetype glew hdf5 jsoncpp libharu libpng libxml2 lz4 qt6-qtbase qt6-qttools tiff $(BUILD)~$(PKG)
 
 $(PKG)_TARGETS       := $(BUILD) $(MXE_TARGETS)
 $(PKG)_DEPS_$(BUILD) := cmake
@@ -57,6 +57,7 @@ define $(PKG)_BUILD
         -DVTK_MODULE_USE_EXTERNAL_VTK_gl2ps=OFF \
         -DVTK_MODULE_USE_EXTERNAL_VTK_tiff=ON \
         -DVTK_MODULE_USE_EXTERNAL_VTK_hdf5=ON \
+		-DVTK_MODULE_USE_EXTERNAL_VTK_libharu=ON \
         -DVTK_USE_SYSTEM_GLEW=ON \
         -DVTK_FORBID_DOWNLOADS=ON \
         -DBUILD_EXAMPLES=OFF \

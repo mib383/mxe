@@ -23,8 +23,6 @@ $(PKG)_DEPS_$(BUILD) := cmake
 #endef
 #
 define $(PKG)_BUILD_$(BUILD)
-	echo '\\$a target_link_libraries(SimpleView PRIVATE $(PREFIX)/$(TARGET)/lib/libbrotli.a)' >> $(SOURCE_DIR)/Examples/GUI/Qt/SimpleView/CMakeLists.txt
-	tail $(SOURCE_DIR)/Examples/GUI/Qt/SimpleView/CMakeLists.txt
     # first we need a native build to create the compile tools
     # must be built in dest since there's no way to install tools only
     # and the build rules reference certain make targets
@@ -68,7 +66,7 @@ define $(PKG)_BUILD
 
     #now build the GUI -> Qt -> SimpleView Example
     mkdir '$(BUILD_DIR).test'
-	
+	echo 'target_link_libraries(SimpleView PRIVATE $(PREFIX)/$(TARGET)/lib/libbrotli.a)' >> $(SOURCE_DIR)/Examples/GUI/Qt/SimpleView/CMakeLists.txt
     cd '$(BUILD_DIR).test' && '$(TARGET)-cmake' \
         '$(SOURCE_DIR)/Examples/GUI/Qt/SimpleView'
     $(MAKE) -C '$(BUILD_DIR).test' -j '$(JOBS)' VERBOSE=1

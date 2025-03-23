@@ -61,6 +61,7 @@ define $(PKG)_BUILD
 		-DH5_LONG_TO_LDOUBLE_SPECIAL_RUN=0 -DH5_LONG_TO_LDOUBLE_SPECIAL_RUN__TRYRUN_OUTPUT="" \
 		-DH5_DISABLE_SOME_LDOUBLE_CONV_RUN=0 -DH5_DISABLE_SOME_LDOUBLE_CONV_RUN__TRYRUN_OUTPUT="" \
         $(PKG_CONFIGURE_OPTS)
+	$(if $(BUILD_STATIC),'$(SED)' -i "/^ *LINK_LIBRARIES = /{s/$$/ `'$(TARGET)-pkg-config' --libs libbrotlidec`/g}" '$(BUILD_DIR)/build.ninja',)
     $(MAKE) -C '$(BUILD_DIR)' -j '$(JOBS)' VERBOSE=1
     $(MAKE) -C '$(BUILD_DIR)' -j 1 install VERBOSE=1
 

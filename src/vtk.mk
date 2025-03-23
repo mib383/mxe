@@ -66,7 +66,7 @@ define $(PKG)_BUILD
 
     #now build the GUI -> Qt -> SimpleView Example
     mkdir '$(BUILD_DIR).test'
-	$(SED) -i '$a\target_link_libraries(SimpleView PRIVATE $(PREFIX)/$(TARGET)/lib/libbrotli.a)' $(BUILD_DIR).test/CMakeLists.txt
+	$(SED) -i '$a target_link_libraries(SimpleView PRIVATE $(PREFIX)/$(TARGET)/lib/libbrotli.a)' $(BUILD_DIR).test/CMakeLists.txt
     cd '$(BUILD_DIR).test' && '$(TARGET)-cmake' \
         '$(SOURCE_DIR)/Examples/GUI/Qt/SimpleView'
     $(MAKE) -C '$(BUILD_DIR).test' -j '$(JOBS)' VERBOSE=1

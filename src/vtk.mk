@@ -62,10 +62,10 @@ define $(PKG)_BUILD
 		-DH5_LONG_TO_LDOUBLE_SPECIAL_RUN=0 -DH5_LONG_TO_LDOUBLE_SPECIAL_RUN__TRYRUN_OUTPUT="" \
 		-DH5_DISABLE_SOME_LDOUBLE_CONV_RUN=0 -DH5_DISABLE_SOME_LDOUBLE_CONV_RUN__TRYRUN_OUTPUT="" \
         $(PKG_CONFIGURE_OPTS)
-	echo 'target_link_libraries(VTK::RenderingCore INTERFACE $(PREFIX)/$(TARGET)/lib/libbrotlidec.a $(PREFIX)/$(TARGET)/lib/libbrotlienc.a $(PREFIX)/$(TARGET)/lib/libbz2.a)' >> $(BUILD_DIR)/lib/cmake/vtk-$(call SHORT_PKG_VERSION,$(PKG))/vtk-config.cmake
     $(MAKE) -C '$(BUILD_DIR)' -j '$(JOBS)' VERBOSE=1
     $(MAKE) -C '$(BUILD_DIR)' -j 1 install VERBOSE=1
-
+	
+	echo 'target_link_libraries(VTK::RenderingCore INTERFACE $(PREFIX)/$(TARGET)/lib/libbrotlidec.a $(PREFIX)/$(TARGET)/lib/libbrotlienc.a $(PREFIX)/$(TARGET)/lib/libbz2.a)' >> $(PREFIX)/$(TARGET)/lib/cmake/vtk-$(call SHORT_PKG_VERSION,$(PKG))/vtk-config.cmake
     #now build the GUI -> Qt -> SimpleView Example
     mkdir '$(BUILD_DIR).test'
 	# echo 'target_link_libraries(SimpleView PRIVATE $(PREFIX)/$(TARGET)/lib/libbrotlidec.a)' >> $(SOURCE_DIR)/Examples/GUI/Qt/SimpleView/CMakeLists.txt

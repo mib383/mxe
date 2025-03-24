@@ -69,6 +69,7 @@ define $(PKG)_BUILD
     mkdir '$(BUILD_DIR).test'
 	echo 'target_link_libraries(SimpleView PRIVATE $(PREFIX)/$(TARGET)/lib/libbrotlidec.a)' >> $(SOURCE_DIR)/Examples/GUI/Qt/SimpleView/CMakeLists.txt
 	echo 'target_link_libraries(SimpleView PRIVATE $(PREFIX)/$(TARGET)/lib/libbrotlienc.a)' >> $(SOURCE_DIR)/Examples/GUI/Qt/SimpleView/CMakeLists.txt
+	echo 'target_link_libraries(SimpleView PRIVATE $(PREFIX)/$(TARGET)/lib/libbz2.a)' >> $(SOURCE_DIR)/Examples/GUI/Qt/SimpleView/CMakeLists.txt
     cd '$(BUILD_DIR).test' && '$(TARGET)-cmake' \
         '$(SOURCE_DIR)/Examples/GUI/Qt/SimpleView'
     $(MAKE) -C '$(BUILD_DIR).test' -j '$(JOBS)' VERBOSE=1

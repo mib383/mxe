@@ -65,7 +65,7 @@ define $(PKG)_BUILD
     $(MAKE) -C '$(BUILD_DIR)' -j '$(JOBS)' VERBOSE=1
     $(MAKE) -C '$(BUILD_DIR)' -j 1 install VERBOSE=1
 	
-	echo 'target_link_libraries(VTK::RenderingCore INTERFACE $(PREFIX)/$(TARGET)/lib/libbrotlidec.a $(PREFIX)/$(TARGET)/lib/libbrotlienc.a $(PREFIX)/$(TARGET)/lib/libbz2.a)' >> $(PREFIX)/$(TARGET)/lib/cmake/vtk-$(call SHORT_PKG_VERSION,$(PKG))/vtk-config.cmake
+	echo 'target_link_libraries(VTK::RenderingCore INTERFACE $(PREFIX)/$(TARGET)/lib/libbrotlidec.a $(PREFIX)/$(TARGET)/lib/libbrotlienc.a $(PREFIX)/$(TARGET)/lib/libbrotlicommon.a $(PREFIX)/$(TARGET)/lib/libbz2.a)' >> $(PREFIX)/$(TARGET)/lib/cmake/vtk-$(call SHORT_PKG_VERSION,$(PKG))/vtk-config.cmake
     #now build the GUI -> Qt -> SimpleView Example
     mkdir '$(BUILD_DIR).test'
 	# echo 'target_link_libraries(SimpleView PRIVATE $(PREFIX)/$(TARGET)/lib/libbrotlidec.a)' >> $(SOURCE_DIR)/Examples/GUI/Qt/SimpleView/CMakeLists.txt

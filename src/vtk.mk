@@ -44,7 +44,7 @@ define $(PKG)_BUILD
     $(SED) -i 's,d3d9,nod3d9,g' '$(1)/CMake/FindDirectX.cmake'
 	
 	echo 'target_link_libraries(RenderingFreeType INTERFACE $(shell $(PREFIX)/$(TARGET)/bin/freetype-config --libs))' >> $(SOURCE_DIR)/Rendering/FreeType/CMakeLists.txt
-	echo 'target_link_libraries(VTK::RenderingFreeType INTERFACE $(shell $(PREFIX)/$(TARGET)/bin/freetype-config --libs))' >> $(SOURCE_DIR)/CMake/vtk-config.cmake.in
+	#echo 'target_link_libraries(VTK::RenderingFreeType INTERFACE -lharfbuzz -lfreetype -lbz2 -lpng16 -lharfbuzz_too -lfreetype_too -lglib-2.0 -lintl -liconv -latomic -lm -lws2_32 -lwinmm -pthread -lpcre2-8 -lole32 -lshlwapi -luuid -lz -lbrotlidec -lbrotlicommon)' >> $(SOURCE_DIR)/CMake/vtk-config.cmake.in
 	# -DVTK_USE_EXTERNAL=ON \
     # now the cross compilation
     cd '$(BUILD_DIR)' && '$(TARGET)-cmake' '$(SOURCE_DIR)' \

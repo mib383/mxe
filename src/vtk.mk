@@ -44,8 +44,8 @@ define $(PKG)_BUILD
     $(SED) -i 's,d3d9,nod3d9,g' '$(1)/CMake/FindDirectX.cmake'
 	
 	
-	echo "$(eval "$($(PREFIX)/$(TARGET)/bin/freetype-config --libs")"
-	FTLIBS="$(eval "$($(PREFIX)/$(TARGET)/bin/freetype-config --libs")"
+	echo $(eval "$($(PREFIX)/$(TARGET)/bin/freetype-config --libs")
+	FTLIBS := $(shell $(PREFIX)/$(TARGET)/bin/freetype-config --libs)
 	FTDIR1=$(PREFIX)/$(TARGET)/include/freetype2
 	FTDIR2=$(PREFIX)/$(TARGET)/include/
 	FTDIRS=$(FTDIR1);$(FTDIR1)
@@ -68,7 +68,7 @@ define $(PKG)_BUILD
         -DVTK_FORBID_DOWNLOADS=ON \
         -DBUILD_EXAMPLES=OFF \
         -DBUILD_TESTING=OFF \
-		-DFREETYPE_LIBRARIES="$(eval "$($(PREFIX)/$(TARGET)/bin/freetype-config --libs")" \
+		-DFREETYPE_LIBRARIES="$(FTLIBS)" \
 		-DFREETYPE_INCLUDE_DIR_ft2build="$(PREFIX)/$(TARGET)/include/freetype2" \
 		-DFREETYPE_INCLUDE_DIR_freetype2="$(PREFIX)/$(TARGET)/include" \
 		-DFREETYPE_INCLUDE_DIRS="$(PREFIX)/$(TARGET)/include/freetype2;$(PREFIX)/$(TARGET)/include" \

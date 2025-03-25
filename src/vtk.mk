@@ -57,6 +57,7 @@ define $(PKG)_BUILD
         -DVTK_FORBID_DOWNLOADS=ON \
         -DBUILD_EXAMPLES=OFF \
         -DBUILD_TESTING=OFF \
+		-Dfreetype_DIR="$(PREFIX)/$(TARGET)/include/freetype2" \
 		-DFREETYPE_LIBRARIES="$(shell $(PREFIX)/$(TARGET)/bin/freetype-config --libs)" \
 		-DFREETYPE_INCLUDE_DIR_ft2build="$(PREFIX)/$(TARGET)/include/freetype2" \
 		-DFREETYPE_INCLUDE_DIR_freetype2="$(PREFIX)/$(TARGET)/include" \

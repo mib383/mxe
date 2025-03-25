@@ -43,6 +43,12 @@ define $(PKG)_BUILD
     # DirectX is detected on Mac OSX but we use OpenGL
     $(SED) -i 's,d3d9,nod3d9,g' '$(1)/CMake/FindDirectX.cmake'
 	
+	
+	FTLIBS=`$(PREFIX)/$(TARGET)/bin/$(TARGET)-freetype-config --libs`
+	FTDIR1=$(PREFIX)/$(TARGET)/include/freetype2
+	FTDIR2=$(PREFIX)/$(TARGET)/include/
+	FTDIRS=$(FTDIR1);$(FTDIR1)
+	
 	# -DVTK_USE_EXTERNAL=ON \
     # now the cross compilation
     cd '$(BUILD_DIR)' && '$(TARGET)-cmake' '$(SOURCE_DIR)' \
@@ -61,7 +67,7 @@ define $(PKG)_BUILD
 		-DFREETYPE_INCLUDE_DIR_freetype2="$(PREFIX)/$(TARGET)/include" \
 		-DFREETYPE_INCLUDE_DIRS="$(PREFIX)/$(TARGET)/include/freetype2;$(PREFIX)/$(TARGET)/include" \
 		-DVTK_MODULE_ENABLE_VTK_libproj=NO \
-		-DVTK_MODULE_USE_EXTERNAL_VTK_freetype=ON \
+		-DVTK_MODULE_USE_EXTERNAL_VTK_freetype=OFF \
 		-DVTK_REQUIRE_LARGE_FILE_SUPPORT_EXITCODE=0 \
 		-DH5_PRINTF_LL_TEST_RUN=0 -DH5_PRINTF_LL_TEST_RUN__TRYRUN_OUTPUT="" \
 		-DH5_LDOUBLE_TO_LONG_SPECIAL_RUN=0 -DH5_LDOUBLE_TO_LONG_SPECIAL_RUN__TRYRUN_OUTPUT="" \

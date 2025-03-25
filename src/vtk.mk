@@ -44,16 +44,6 @@ define $(PKG)_BUILD
     $(SED) -i 's,d3d9,nod3d9,g' '$(1)/CMake/FindDirectX.cmake'
 	
 	
-	FTLIBS := $(shell $(PREFIX)/$(TARGET)/bin/freetype-config --libs)
-	FTDIR1 := $(PREFIX)/$(TARGET)/include/freetype2
-	FTDIR2 := $(PREFIX)/$(TARGET)/include/
-	FTDIRS := $(FTDIR1)
-	
-	echo "$(FTLIBS)"
-	echo "$(FTDIR1)"
-	echo "$(FTDIR2)"
-	echo "$(FTDIRS)"
-	
 	# -DVTK_USE_EXTERNAL=ON \
     # now the cross compilation
     cd '$(BUILD_DIR)' && '$(TARGET)-cmake' '$(SOURCE_DIR)' \
@@ -67,7 +57,7 @@ define $(PKG)_BUILD
         -DVTK_FORBID_DOWNLOADS=ON \
         -DBUILD_EXAMPLES=OFF \
         -DBUILD_TESTING=OFF \
-		-DFREETYPE_LIBRARIES="$(FTLIBS)" \
+		-DFREETYPE_LIBRARIES="$(shell $(PREFIX)/$(TARGET)/bin/freetype-config --libs)" \
 		-DFREETYPE_INCLUDE_DIR_ft2build="$(PREFIX)/$(TARGET)/include/freetype2" \
 		-DFREETYPE_INCLUDE_DIR_freetype2="$(PREFIX)/$(TARGET)/include" \
 		-DFREETYPE_INCLUDE_DIRS="$(PREFIX)/$(TARGET)/include/freetype2;$(PREFIX)/$(TARGET)/include" \

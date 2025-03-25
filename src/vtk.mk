@@ -2,9 +2,9 @@
 
 PKG               := vtk
 $(PKG)_IGNORE     :=
-$(PKG)_VERSION    := 39f08ee
+$(PKG)_VERSION    := 6ad1085
 #9.4.1
-$(PKG)_CHECKSUM   := 03ad1c255fb592fb2047dbd934b4010eb26b5a3b8499438aa56fda9522544282
+$(PKG)_CHECKSUM   := 7caaa548787da95c802ce318ac68d6b6a0de831ec03a0a84ccf97801085c99b2
 #$(PKG)_SUBDIR     := VTK-$($(PKG)_VERSION)
 $(PKG)_GH_CONF    := Kitware/VTK/branches/master
 #$(PKG)_FILE       := $($(PKG)_SUBDIR).tar.gz

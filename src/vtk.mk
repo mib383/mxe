@@ -70,8 +70,8 @@ define $(PKG)_BUILD
 		-DH5_LONG_TO_LDOUBLE_SPECIAL_RUN=0 -DH5_LONG_TO_LDOUBLE_SPECIAL_RUN__TRYRUN_OUTPUT="" \
 		-DH5_DISABLE_SOME_LDOUBLE_CONV_RUN=0 -DH5_DISABLE_SOME_LDOUBLE_CONV_RUN__TRYRUN_OUTPUT="" \
         $(PKG_CONFIGURE_OPTS)
-    #$(MAKE) -C '$(BUILD_DIR)' -j '$(JOBS)' VERBOSE=1
-    #$(MAKE) -C '$(BUILD_DIR)' -j 1 install VERBOSE=1
+    $(MAKE) -C '$(BUILD_DIR)' -j '$(JOBS)' VERBOSE=1
+    $(MAKE) -C '$(BUILD_DIR)' -j 1 install VERBOSE=1
 	
 	#echo 'target_link_libraries(Freetype::Freetype INTERFACE $(PREFIX)/$(TARGET)/lib/libbrotlidec.a $(PREFIX)/$(TARGET)/lib/libbrotlienc.a $(PREFIX)/$(TARGET)/lib/libbrotlicommon.a $(PREFIX)/$(TARGET)/lib/libbz2.a)' >> $(PREFIX)/$(TARGET)/lib/cmake/vtk-$(call SHORT_PKG_VERSION,$(PKG))/vtk-config.cmake
 	echo 'target_link_libraries(Freetype::Freetype INTERFACE $(FTLIBS))' >> $(PREFIX)/$(TARGET)/lib/cmake/vtk-$(PKG)_VERSION/vtk-config.cmake

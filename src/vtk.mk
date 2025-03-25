@@ -2,11 +2,13 @@
 
 PKG               := vtk
 $(PKG)_IGNORE     :=
-$(PKG)_VERSION    := 9.4.1
-$(PKG)_CHECKSUM   := c253b0c8d002aaf98871c6d0cb76afc4936c301b72358a08d5f3f72ef8bc4529
+$(PKG)_VERSION    := 39f08ee
+#9.4.1
+$(PKG)_CHECKSUM   := 03ad1c255fb592fb2047dbd934b4010eb26b5a3b8499438aa56fda9522544282
 $(PKG)_SUBDIR     := VTK-$($(PKG)_VERSION)
-$(PKG)_FILE       := $($(PKG)_SUBDIR).tar.gz
-$(PKG)_URL        := https://www.vtk.org/files/release/$(call SHORT_PKG_VERSION,$(PKG))/$($(PKG)_FILE)
+$(PKG)_GH_CONF    := Kitware/VTK/branches/master
+#$(PKG)_FILE       := $($(PKG)_SUBDIR).tar.gz
+#$(PKG)_URL        := https://www.vtk.org/files/release/$(call SHORT_PKG_VERSION,$(PKG))/$($(PKG)_FILE)
 $(PKG)_QT_VERSION := 6
 $(PKG)_DEPS       := cc expat brotli bzip2 freetype glew hdf5 jsoncpp libharu libpng libxml2 lz4 qt6-qtbase qt6-qttools tiff $(BUILD)~$(PKG)
 

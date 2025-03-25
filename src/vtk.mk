@@ -44,7 +44,6 @@ define $(PKG)_BUILD
     $(SED) -i 's,d3d9,nod3d9,g' '$(1)/CMake/FindDirectX.cmake'
 	
 	
-	echo $(eval "$($(PREFIX)/$(TARGET)/bin/freetype-config --libs")
 	FTLIBS := $(shell $(PREFIX)/$(TARGET)/bin/freetype-config --libs)
 	FTDIR1=$(PREFIX)/$(TARGET)/include/freetype2
 	FTDIR2=$(PREFIX)/$(TARGET)/include/

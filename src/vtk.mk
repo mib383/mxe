@@ -56,6 +56,10 @@ define $(PKG)_BUILD
         -DVTK_FORBID_DOWNLOADS=ON \
         -DBUILD_EXAMPLES=OFF \
         -DBUILD_TESTING=OFF \
+		-DFREETYPE_LIBRARIES="`$(PREFIX)/$(TARGET)/bin/$(TARGET)-freetype-config --libs`" \
+		-DFREETYPE_INCLUDE_DIR_ft2build="$(PREFIX)/$(TARGET)/include/freetype2" \
+		-DFREETYPE_INCLUDE_DIR_freetype2="$(PREFIX)/$(TARGET)/include" \
+		-DFREETYPE_INCLUDE_DIRS="$(PREFIX)/$(TARGET)/include/freetype2;$(PREFIX)/$(TARGET)/include"
 		-DVTK_MODULE_ENABLE_VTK_libproj=NO \
 		-DVTK_MODULE_USE_EXTERNAL_VTK_freetype=ON \
 		-DVTK_REQUIRE_LARGE_FILE_SUPPORT_EXITCODE=0 \

@@ -18,7 +18,7 @@ define $(PKG)_UPDATE
 endef
 
 define $(PKG)_BUILD_COMMON
-    cd '$(1)' && GNUMAKE=$(MAKE) ./configure --with-harfbuzz=yes \
+    cd '$(1)' && GNUMAKE=$(MAKE) ./configure --with-harfbuzz=yes  \
         $(MXE_CONFIGURE_OPTS) \
         --enable-freetype-config \
         LIBPNG_CFLAGS="`$(TARGET)-pkg-config libpng --cflags`" \

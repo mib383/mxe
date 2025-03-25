@@ -43,7 +43,7 @@ define $(PKG)_BUILD
     # DirectX is detected on Mac OSX but we use OpenGL
     $(SED) -i 's,d3d9,nod3d9,g' '$(1)/CMake/FindDirectX.cmake'
 	
-	echo 'target_link_libraries(VTK::RenderingFreeType INTERFACE $(shell $(PREFIX)/$(TARGET)/bin/freetype-config --libs))' >> $(SOURCE_DIR)/lib/cmake/vtk-9.4/vtk-config.cmake.in
+	echo 'target_link_libraries(VTK::RenderingFreeType INTERFACE $(shell $(PREFIX)/$(TARGET)/bin/freetype-config --libs))' >> $(SOURCE_DIR)/CMake/vtk-config.cmake.in
 	# -DVTK_USE_EXTERNAL=ON \
     # now the cross compilation
     cd '$(BUILD_DIR)' && '$(TARGET)-cmake' '$(SOURCE_DIR)' \

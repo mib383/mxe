@@ -1,0 +1,19 @@
+This file is part of MXE. See LICENSE.md for licensing information.
+
+From: MXE <mxe@mxe.cc>
+Subject: [PATCH] qt6-qtquick3d: map imported assimp configs to Release in config test
+
+diff --git a/config.tests/quick3d_assimp/CMakeLists.txt b/config.tests/quick3d_assimp/CMakeLists.txt
+index 0000000..1111111 100644
+--- a/config.tests/quick3d_assimp/CMakeLists.txt
++++ b/config.tests/quick3d_assimp/CMakeLists.txt
+@@ -1,3 +1,12 @@
+ cmake_minimum_required(VERSION 3.16)
++
++# MXE/MinGW shared builds may provide assimp::assimp import library info only
++# for Release. Qt's config.tests/try_compile may use other config names.
++set(CMAKE_MAP_IMPORTED_CONFIG_NOCONFIG   Release)
++set(CMAKE_MAP_IMPORTED_CONFIG_RELWITHDEBINFO Release)
++set(CMAKE_MAP_IMPORTED_CONFIG_MINSIZEREL Release)
++
+ project(quick3d_assimp CXX)
